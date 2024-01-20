@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432" # Bind our host's port 3000 to the app port 3000:
+    networks:
+      - app_network
+
+  # Define a network, which allows containers to communicate
+  # with each other, by using their container name as a hostname
+networks:
+  app_network:
+    external: true
+volumes:
+  db-data:
