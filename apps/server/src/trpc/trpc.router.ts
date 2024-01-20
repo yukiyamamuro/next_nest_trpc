@@ -1,25 +1,20 @@
 import { INestApplication, Injectable } from '@nestjs/common';
-import { z } from 'zod';
 import { TrpcService } from '@server/trpc/trpc.service';
 import * as trpcExpress from '@trpc/server/adapters/express';
+import { UserService } from './user.service';
+import { PostService } from './post.service';
 
 @Injectable()
 export class TrpcRouter {
-  constructor(private readonly trpc: TrpcService) {}
+  constructor(
+    private readonly trpc: TrpcService,
+    private readonly user: UserService,
+    private readonly post: PostService,
+  ) {}
 
   appRouter = this.trpc.router({
-    hello: this.trpc.procedure
-      .input(
-        z.object({
-          name: z.string().optional(),
-        }),
-      )
-      .query(({ input }) => {
-        const { name } = input;
-        return {
-          greeting: `Hello ${name ? name : `Bilbo`}`,
-        };
-      }),
+    user: this.user.userRouter,
+    post: this.post.postRouter,
   });
 
   async applyMiddleware(app: INestApplication) {
