@@ -1,4 +1,4 @@
-import { trpc } from "./trpc";
+import { trpc } from "@web/app/trpc";
 
 export default async function Home() {
   const { users } = await trpc.user.list.query();

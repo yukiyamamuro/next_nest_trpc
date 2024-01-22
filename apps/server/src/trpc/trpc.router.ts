@@ -1,8 +1,8 @@
 import { INestApplication, Injectable } from '@nestjs/common';
-import { TrpcService } from './trpc.service';
+import { TrpcService } from '@server/trpc/trpc.service';
 import * as trpcExpress from '@trpc/server/adapters/express';
-import { UserService } from './user.service';
-import { PostService } from './post.service';
+import { UserService } from '@server/trpc/user.service';
+import { PostService } from '@server/trpc/post.service';
 
 @Injectable()
 export class TrpcRouter {

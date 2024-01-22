@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { TrpcService } from './trpc.service';
+import { TrpcService } from '@server/trpc/trpc.service';
 
 @Injectable()
 export class PostService {
