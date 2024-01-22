@@ -1,4 +1,6 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Default",
   "compilerOptions": {
     "baseUrl": ".",
     "experimentalDecorators": true,
@@ -14,5 +16,5 @@
       "@server/*": ["./apps/server/src/*"],
       "@web/*": ["./apps/web/*"]
     }
-  }
+  },
 }
